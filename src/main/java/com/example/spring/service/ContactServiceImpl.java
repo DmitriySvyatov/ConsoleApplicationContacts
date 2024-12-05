@@ -26,7 +26,7 @@ public class ContactServiceImpl {
         String[] lines = input.split(";");
         Contact contact = new Contact(lines[0], lines[1], lines[2]);
         if (isValidContact(contact)) {
-            if (!contactHashMap.containsKey(contact.getEmail())) {//обработка существующей записи прописать
+            if (!contactHashMap.containsKey(contact.getEmail())) {
                 contactHashMap.put(contact.getEmail(), contact);
                 System.out.println("Запись добавлена");
             } else {
