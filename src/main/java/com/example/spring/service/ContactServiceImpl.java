@@ -1,7 +1,8 @@
-package com.example.spring;
+package com.example.spring.service;
 
+import com.example.spring.dto.Contact;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -13,8 +14,8 @@ import java.util.HashMap;
 import java.util.regex.Pattern;
 
 
-@Component
-public class ContactsWorker {
+@Service
+public class ContactServiceImpl {
     private final HashMap<String, Contact> contactHashMap = new HashMap<>();
     @Value("${file.path}")
     private String fileName;
@@ -42,7 +43,6 @@ public class ContactsWorker {
         System.out.println("Список контактов:");
         contactHashMap.values().forEach(System.out::println);
     }
-
 
     public void removeContactByEmail(String email) {
         if (isEmail(email)) {
@@ -88,7 +88,6 @@ public class ContactsWorker {
                 System.err.println("Ошибка при загрузке контактов: " + e.getMessage());
             }
         }
-
     }
 
     public boolean isValidContact(Contact contact) {
